@@ -8,6 +8,8 @@ Exercises
 4. Make the ghosts faster/slower.
 5. Make the ghosts smarter.
 
+
+Israel Macías Faster
 """
 
 from random import choice
@@ -121,24 +123,24 @@ def move():
 
     up()
     goto(pacman.x + 10, pacman.y + 10)
-    dot(20, 'yellow')
+    dot(20, 'green')
 
     for point, course in ghosts:
         if valid(point + course):
-            point.move(course)
+            point.move(course*1.7)
         else:
             options = [
-                vector(5, 0),
-                vector(-5, 0),
-                vector(0, 5),
-                vector(0, -5),
+                vector(6, 0),
+                vector(-6, 0),
+                vector(0, 6),
+                vector(0, -6),
             ]
             plan = choice(options)
             course.x = plan.x
             course.y = plan.y
 
         up()
-        goto(point.x + 10, point.y + 10)
+        goto(point.x + 12, point.y + 12)
         dot(20, 'red')
 
     update()
