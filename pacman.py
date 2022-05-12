@@ -1,5 +1,7 @@
 """Pacman, classic arcade game.
 
+Angel Afonso
+
 Exercises
 
 1. Change the board.
