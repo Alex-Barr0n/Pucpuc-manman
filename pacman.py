@@ -134,6 +134,8 @@ def move():
                 vector(-5, 0),
                 vector(0, 5),
                 vector(0, -5),
+                vector(-10,5),
+                vector(0,10)
             ]
             plan = choice(options)
             course.x = plan.x
