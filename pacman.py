@@ -1,10 +1,18 @@
 """Pacman, classic arcade game.
+
+Creadores: 
+Angel Afonso
+Israel Macías
+Sebastian Moncada
+Andrea Barrón
+
 Exercises
 1. Change the board.
 2. Change the number of ghosts.
 3. Change where pacman starts.
 4. Make the ghosts faster/slower.
 5. Make the ghosts smarter.
+
 """
 
 from random import choice
@@ -45,6 +53,7 @@ tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
 
+
 def square(x, y):
     "Draw square using path at (x, y)."
     path.up()
@@ -81,8 +90,8 @@ def valid(point):
 
 def world():
     "Draw world using path."
-    bgcolor('black')
-    path.color('blue')
+    bgcolor('magenta')
+    path.color('black')
 
     for index in range(len(tiles)):
         tile = tiles[index]
@@ -118,24 +127,24 @@ def move():
 
     up()
     goto(pacman.x + 10, pacman.y + 10)
-    dot(20, 'yellow')
+    dot(20, 'green')
 
     for point, course in ghosts:
         if valid(point + course):
-            point.move(course*2)
+            point.move(course*1.7)
         else:
             options = [
-                vector(5, 0),
-                vector(-5, 0),
-                vector(0, 5),
-                vector(0, -5),
+                vector(6, 0),
+                vector(-6, 0),
+                vector(0, 6),
+                vector(0, -6),
             ]
             plan = choice(options)
             course.x = plan.x
             course.y = plan.y
 
         up()
-        goto(point.x + 10, point.y + 10)
+        goto(point.x + 12, point.y + 12)
         dot(20, 'red')
 
     update()
