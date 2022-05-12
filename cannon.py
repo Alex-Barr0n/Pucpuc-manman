@@ -1,20 +1,23 @@
 """Cannon, hitting targets with projectiles.
+Alex_score
+=======
 
 Angel Afonso
 
+main
 Exercises
-
 1. Keep score by counting target hits.
 2. Vary the effect of gravity.
 3. Apply gravity to the targets.
 4. Change the speed of the ball.
-
 """
 
 from random import randrange
 from turtle import *
 from freegames import vector
 
+state = {'score': 0}
+writer = Turtle(visible=False)
 ball = vector(-200, -200)
 speed = vector(0, 0)
 targets = []
@@ -47,6 +50,13 @@ def draw():
 
 def move():
     "Move ball and targets."
+    writer.undo()
+    writer.up()
+    writer.goto(160, 160)
+    writer.down()
+    writer.color('black')
+    writer.write(state['score'])
+
     # Generate a new target at random times
     if randrange(40) == 0:
         y = randrange(-150, 150)
@@ -68,9 +78,11 @@ def move():
 
     # Detect if the bullet hits a target
     for target in dupe:
-        if abs(target - ball) > 13:
+        if abs(target - ball) > 14:
             targets.append(target)
-
+        else:
+            state['score'] += 1
+            #score+=1 
     draw()
 
     # Detect when a target reaches the left side
@@ -88,3 +100,4 @@ tracer(False)
 onscreenclick(tap)
 move()
 done()
+
