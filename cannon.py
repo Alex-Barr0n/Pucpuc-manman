@@ -1,4 +1,10 @@
 """Cannon, hitting targets with projectiles.
+Alex_score
+=======
+
+Angel Afonso
+
+main
 Exercises
 1. Keep score by counting target hits.
 2. Vary the effect of gravity.
