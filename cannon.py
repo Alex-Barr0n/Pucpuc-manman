@@ -1,5 +1,7 @@
 """Cannon, hitting targets with projectiles.
 
+Angel Afonso
+
 Exercises
 
 1. Keep score by counting target hits.
