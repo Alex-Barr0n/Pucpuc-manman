@@ -48,6 +48,7 @@ tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
 
+
 def square(x, y):
     "Draw square using path at (x, y)."
     path.up()
@@ -84,8 +85,8 @@ def valid(point):
 
 def world():
     "Draw world using path."
-    bgcolor('black')
-    path.color('blue')
+    bgcolor('magenta')
+    path.color('black')
 
     for index in range(len(tiles)):
         tile = tiles[index]
