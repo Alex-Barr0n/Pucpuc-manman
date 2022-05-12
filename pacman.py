@@ -1,13 +1,10 @@
 """Pacman, classic arcade game.
-
 Exercises
-
 1. Change the board.
 2. Change the number of ghosts.
 3. Change where pacman starts.
 4. Make the ghosts faster/slower.
 5. Make the ghosts smarter.
-
 """
 
 from random import choice
@@ -18,14 +15,12 @@ state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
-pacman = vector(-40, 40)
+pacman = vector(-40, -80)
 ghosts = [
     [vector(-180, 160), vector(5, 0)],
     [vector(-180, -160), vector(0, 5)],
     [vector(100, 160), vector(0, -5)],
     [vector(100, -160), vector(-5, 0)],
-    [vector(-100, 160), vector(-10,5)],
-    [vector(100, -160), vector (0,10)]
 ]
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -127,15 +122,13 @@ def move():
 
     for point, course in ghosts:
         if valid(point + course):
-            point.move(course)
+            point.move(course*2)
         else:
             options = [
                 vector(5, 0),
                 vector(-5, 0),
                 vector(0, 5),
                 vector(0, -5),
-                vector(-10,5),
-                vector(0,10)
             ]
             plan = choice(options)
             course.x = plan.x
