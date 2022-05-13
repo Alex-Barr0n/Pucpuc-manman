@@ -9,6 +9,7 @@ We used GitHub, git bash and python to edit these programs aswell as to coordina
 For each game we made at least 3 changes:
   Pacman:
   -Changed the setting and color of the board
+  -Changed the starting position of Pacman
   -Made the characters faster
   -Added 2 more ghosts
   
