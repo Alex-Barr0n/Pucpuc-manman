@@ -13,6 +13,7 @@ Israel Macías
 
 from turtle import *
 from freegames import vector
+from math import *
 
 def line(start, end):
     "Draw line from start to end."
@@ -34,19 +35,15 @@ def square(start, end):
 
     end_fill()
 
-def circle(start, end):
+def circle(start, end): #function to add circle
     "Draw circle from start to end."
+    r = sqrt((end.x - start.x)**2+(end.y - start.y)**2) 
+
     up()
-    goto(start.x, start.y)
+    goto(start.x, start.y -r)
     down()
     begin_fill()
-
-    for count in range(1):
-        forward(end.x - start.x)
-        left(360)
-	forward(end.y - start.y)
-        left(360)
-
+    circle(r)
     end_fill()
 
 def rectangle(start, end):
@@ -103,6 +100,8 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('magenta'), 'M')
+onkey(lambda: color('orange'),'O')
+onkey(lambda: color('cyan'),'C')
 onkey(lambda: color('red'), 'R')
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
