@@ -85,11 +85,6 @@ def move():
             #score+=1 
     draw()
 
-    # Detect when a target reaches the left side
-    for target in targets:
-        if not inside(target):
-            #targets.remove(target)
-            return
 
     ontimer(move, 50)
 
