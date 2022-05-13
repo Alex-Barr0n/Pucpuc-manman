@@ -1,4 +1,6 @@
-"""Pacman, classic arcade game.
+"""
+
+Pacman, classic arcade game.
 
 Creadores: 
 Angel Afonso
@@ -7,8 +9,9 @@ Sebastian Moncada
 Andrea Barrón
 
 Exercises
+
 1. Change the board. CHECK
-2. Change the number of ghosts.
+2. Change the number of ghosts. CHECK
 3. Change where pacman starts. CHECK
 4. Make the ghosts faster/slower. CHECK
 5. Make the ghosts smarter.
@@ -24,6 +27,7 @@ path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-20, -80)
+ghosts_vel = 2 # Si la velocidad es menor a 1 se sube la velocidad de Pacman. Si es 2, por ejemplo, los fantasmas van a ser el doble de veloces que Pac man
 ghosts = [
     [vector(-180, 160), vector(5, 0)],
     [vector(-180, -160), vector(0, 5)],
@@ -32,6 +36,7 @@ ghosts = [
     [vector(-100, 160), vector(-10,5)],
     [vector(100, -160), vector (0,10)]
 ]
+
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0,
@@ -54,7 +59,6 @@ tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
-
 
 def square(x, y):
     "Draw square using path at (x, y)."
@@ -92,7 +96,7 @@ def valid(point):
 
 def world():
     "Draw world using path."
-    bgcolor('magenta')
+    bgcolor('blue')
     path.color('black')
 
     for index in range(len(tiles)):
@@ -115,8 +119,14 @@ def move():
 
     clear()
 
-    if valid(pacman + aim):
-        pacman.move(aim)
+    if (ghosts_vel < 1):
+        range_vel = round(1 / ghosts_vel)
+        for i in range(range_vel):
+            if valid(pacman + aim):
+                pacman.move(aim)
+    else:
+        if valid(pacman + aim):
+            pacman.move(aim)
 
     index = offset(pacman)
 
@@ -129,26 +139,42 @@ def move():
 
     up()
     goto(pacman.x + 10, pacman.y + 10)
-    dot(20, 'green')
+    dot(20, 'yellow')
 
-    for point, course in ghosts:
-        if valid(point + course):
-            point.move(course*2)
-        else:
-            options = [
-                vector(6, 0),
-                vector(-6, 0),
-                vector(0, 6),
-                vector(0, -6),
-                vector(-10,5), 
-                vector (0,10)]
-            ]
-            plan = choice(options)
-            course.x = plan.x
-            course.y = plan.y
+    if (ghosts_vel > 1):
+        for i in range(ghosts_vel):
+            for point, course in ghosts:
+                if valid(point + course):
+                    point.move(course)
+                else:
+                    options = [
+                        vector(5, 0),
+                        vector(-5, 0),
+                        vector(0, 5),
+                        vector(0, -5)
+                    ]
+                    plan = choice(options)
+                    course.x = plan.x
+                    course.y = plan.y
 
+    else:
+        for point, course in ghosts:
+            if valid(point + course):
+                point.move(course)
+            else:
+                options = [
+                    vector(5, 0),
+                    vector(-5, 0),
+                    vector(0, 5),
+                    vector(0, -5)
+                ]
+                plan = choice(options)
+                course.x = plan.x
+                course.y = plan.y
+
+    for point, course in ghosts:           
         up()
-        goto(point.x + 12, point.y + 12)
+        goto(point.x + 10, point.y + 10)
         dot(20, 'red')
 
     update()

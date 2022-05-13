@@ -1,6 +1,12 @@
-"""Cannon, hitting targets with projectiles.
+"""
 
+Cannon, hitting targets with projectiles.
+
+Creadores: 
 Angel Afonso
+Israel Macías
+Sebastian Moncada
+Andrea Barrón
 
 Exercises
 

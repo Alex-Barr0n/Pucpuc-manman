@@ -1,4 +1,12 @@
-"""Paint, for drawing shapes.
+"""
+
+Paint, for drawing shapes.
+
+Creadores: 
+Angel Afonso
+Israel Macías
+Sebastian Moncada
+Andrea Barrón
 
 Exercises
 
