@@ -3,6 +3,7 @@ Alex_score
 =======
 
 Angel Afonso
+Israel Macías
 
 main
 Exercises
@@ -21,6 +22,7 @@ writer = Turtle(visible=False)
 ball = vector(-200, -200)
 speed = vector(0, 0)
 targets = []
+background = bgcolor('magenta')
 
 def tap(x, y):
     "Respond to screen tap."
@@ -40,11 +42,11 @@ def draw():
 
     for target in targets:
         goto(target.x, target.y)
-        dot(20, 'blue')
+        dot(20, 'green')
 
     if inside(ball):
         goto(ball.x, ball.y)
-        dot(10, 'red')
+        dot(10, 'blue')
 
     update()
 
