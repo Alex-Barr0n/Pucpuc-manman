@@ -96,7 +96,7 @@ def valid(point):
 
 def world():
     "Draw world using path."
-    bgcolor('blue')
+    bgcolor('magenta')
     path.color('black')
 
     for index in range(len(tiles)):
@@ -139,7 +139,7 @@ def move():
 
     up()
     goto(pacman.x + 10, pacman.y + 10)
-    dot(20, 'yellow')
+    dot(20, 'green')
 
     if (ghosts_vel > 1):
         for i in range(ghosts_vel):
